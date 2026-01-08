@@ -72,34 +72,74 @@ const app = express();
 //     })
 // })
 
-const user = express.Router();
-const goods = express.Router();
+// const user = express.Router();
+// const goods = express.Router();
 
-user.get('/list', function(req,res) {
-    res.send(['jack', 'lily'])
-})
-user.get('/detail', function(req, res) {
-    res.send({
-        name: 'jack',
-        age: 18
-    })
-})
+// user.get('/list', function(req,res) {
+//     res.send(['jack', 'lily'])
+// })
+// user.get('/detail', function(req, res) {
+//     res.send({
+//         name: 'jack',
+//         age: 18
+//     })
+// })
 
-goods.get('/list', function(req,res) {
-    res.send(['可乐', '矿泉水'])
-})
-goods.get('/detail', function(req, res) {
-    res.send({
-        name: '可乐',
-        price: 3
-    })
-})
+// goods.get('/list', function(req,res) {
+//     res.send(['可乐', '矿泉水'])
+// })
+// goods.get('/detail', function(req, res) {
+//     res.send({
+//         name: '可乐',
+//         price: 3
+//     })
+// })
 
-app.use('/user', user)  //注册路由
-app.use('/goods', goods)  //注册路由
+// app.use('/user', user)  //注册路由
+// app.use('/goods', goods)  //注册路由
+
+// ------中间件-------
+
+// function middleware(req, res, next) {
+//     console.log('这是一个全局中间件函数。。。');
+//     next(); //放行
+// }
+
+// app.use(middleware); //注册全局中间件 所有路由都经过并运行
+
+// // 路由中间件
 
 
+// app.get('/user', function(req, res, next) {
+//     console.log('这是user路由中间件。。。');
+//     next();
+// }, function(req, res) {
+//     res.send('user page');
+// })
 
+// app.get('/about', function(req, res) {
+//     res.send('about');
+// })
+
+// logging中间件
+// function logger(req,res,next) {
+//     const time = new Date();
+//     console.log(`[${time.toLocaleString()}] ${req.method} ${req.url}`);
+//     next();
+// }
+
+// app.use(logger); //注册全局中间件
+
+// app.get('/user', function(req, res) {
+//     res.send('user page');
+// })
+
+// app.get('/about', function(req, res) {
+//     res.send('about');
+// })
+
+// 模板引擎 本次学习handlebars
+// 用npm install hbs安装
 
 
 
