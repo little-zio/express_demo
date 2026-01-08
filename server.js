@@ -138,8 +138,26 @@ const app = express();
 //     res.send('about');
 // })
 
-// 模板引擎 本次学习handlebars
+// -----------------模板引擎 本次学习handlebars--------------
 // 用npm install hbs安装
+
+// 指定模板存放目录
+app.set('views', './views');
+
+// 指定模板引擎
+app.set('view engine', 'hbs');
+
+app.get('/', function(req, res) {
+    res.render('index');
+})
+
+app.get('/about', function(req, res) {
+    res.render('about', {
+        name: 'jack',
+        age: 18
+    });
+})
+
 
 
 
