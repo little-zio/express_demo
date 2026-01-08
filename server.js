@@ -148,6 +148,7 @@ app.set('views', './views');
 app.set('view engine', 'hbs');
 
 app.get('/', function(req, res) {
+    throw new Error()
     res.render('index');
 })
 
@@ -160,6 +161,26 @@ app.get('/about', function(req, res) {
 
 // --------------静态资源服务--------------
 app.use(express.static('public')); //指定静态资源目录
+
+// 处理错误
+
+// 404
+// 放在最后，只有前面的匹配不上才会匹配 *
+// 匹配所有路径
+app.use('/*path', function(req, res) {
+    res.status(404).render('404', {url : req.originalUrl});
+})
+
+// or 正则
+// app.use(/.*/, function(req, res) {
+//     res.status(404).render('404', {url : req.originalUrl});
+// })
+
+// js内部错误处理
+// 也要放在最后才能处理所有错误
+app.use((err, req, res, next) => {
+    res.status(500).render('500')
+})
 
 
 app.listen(3000, function() {
