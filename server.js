@@ -27,6 +27,36 @@ app.get('/user', function(req, res) {
     res.send('user')
 })
 
+app.all('/about', function(req, res) {
+    res.send({
+        name: 'about page',
+        age: 18
+    })
+})
+
+// 字符模式
+// app.get('/a{b}cd', function(req, res) { //b可以出现也可以不出现
+//     res.send('a{b}cd 匹配成功');
+// })
+
+// app.get('/ab*cd', function(req, res) { //*通配符任意东西
+//     res.send('ab*cd 匹配成功');
+// })
+
+
+
+// 正则模式
+app.get(/a/, function(req, res) {
+    res.send('/a/ 正则匹配成功');
+})
+
+app.get(/.*fly$/, function(req, res) { //以fly结尾的路径都可以
+    res.send('/.*fly$/ 正则匹配成功');
+})
+
+
+
+
 app.listen(3000, function() {
     console.log('express服务已启动。。。');
 })
