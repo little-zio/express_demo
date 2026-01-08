@@ -158,7 +158,8 @@ app.get('/about', function(req, res) {
     });
 })
 
-
+// --------------静态资源服务--------------
+app.use(express.static('public')); //指定静态资源目录
 
 
 app.listen(3000, function() {
